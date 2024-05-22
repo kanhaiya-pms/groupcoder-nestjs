@@ -5,13 +5,13 @@ export type QuoteDocument = HydratedDocument<Quote>;
 
 @Schema()
 export class Quote {
-  @Prop()
+  @Prop({ required: true })
   quote: string;
 
   @Prop()
   auther: string;
 
-  @Prop()
+  @Prop({ required: true })
   writter: string;
 
   @Prop({ default: 'panding' })

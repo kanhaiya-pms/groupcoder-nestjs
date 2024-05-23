@@ -4,6 +4,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './schemas/user.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { loginDto } from './dto/login.dto';
+
 
 @Injectable()
 export class UsersService {
@@ -15,6 +17,13 @@ export class UsersService {
 
   async findAll() {
     return await this.userModel.find();
+  }
+
+  async findUser(data: loginDto) {
+    return await this.userModel.findOne({
+      email:data.email,
+      password:data.password
+    });
   }
 
   async findOne(id: string) {

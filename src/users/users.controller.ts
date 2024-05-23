@@ -11,6 +11,10 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { loginDto } from './dto/login.dto';
+
+
+
 
 @ApiTags('Users')
 @Controller('users')
@@ -25,6 +29,11 @@ export class UsersController {
   @Get()
   findAll() {
     return this.usersService.findAll();
+  }
+
+  @Post('/login')
+  findUser(@Body() data:loginDto) {
+    return this.usersService.findUser(data);
   }
 
   @Get(':id')

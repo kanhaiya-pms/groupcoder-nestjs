@@ -4,12 +4,13 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { QuotesModule } from './quotes/quotes.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './auth/auth.module';
 
 const db =
   'mongodb+srv://kanhaiyakseeksolution:V551GNP2XqoYDGcV@cluster0.cwurlew.mongodb.net/demo';
 // process.env.DATABASE
 @Module({
-  imports: [MongooseModule.forRoot(db), UsersModule, QuotesModule],
+  imports: [MongooseModule.forRoot(db), UsersModule, QuotesModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

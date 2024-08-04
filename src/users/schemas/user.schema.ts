@@ -17,13 +17,13 @@ export class User {
   @Prop({ required: true })
   role: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
   email: string;
 
   @Prop({ required: true })
   password: string;
 
-  @Prop({ default: Date.now()})
+  @Prop({ default: Date.now() })
   createAt: Date;
 }
 

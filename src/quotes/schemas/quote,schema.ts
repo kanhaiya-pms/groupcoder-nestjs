@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import mongoose, { HydratedDocument } from 'mongoose';
 
 export type QuoteDocument = HydratedDocument<Quote>;
 
@@ -8,7 +8,7 @@ export class Quote {
   @Prop({ required: true })
   quote: string;
 
-  @Prop()
+  @Prop({ default: '' })
   auther: string;
 
   @Prop({ required: true })
@@ -16,6 +16,9 @@ export class Quote {
 
   @Prop({ default: 'panding' })
   status: string;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
+  user: mongoose.Schema.Types.ObjectId;
 
   @Prop({ default: Date.now() })
   createdAt: Date;
